@@ -89,3 +89,32 @@ Se permite el uso del paquete `maker` de Symfony sin ningún tipo de restricció
 ```
 symfony console list make
 ```
+
+
+## Ejercicio Resuelto - Instrucciones
+
+Antes de ejecutar los comandos es necesario crear la db `stockify`
+### Comandos al iniciar
+
+Instalación de dependencias
+
+```
+composer install
+```
+
+DB Migrate
+
+```
+php bin/console doctrine:migrations:migrate  
+```
+
+Cargar data fixtures
+
+```
+php bin/console doctrine:fixtures:load 
+```
+
+## Ejercicio Resuelto - Apuntes
+
+- Ha sido necesario añadir el campo `roles` a la tabla `Users` para poder determinar el rol de los usuarios.
+- El campo `name` de la tabla `products` se ha creado como un VARCHAR(128) porque creo que 64 caracteres puede llegar a ser poca longitud.

@@ -1,0 +1,60 @@
+
+{% include 'layout/header.html.twig' %}
+{% include 'layout/nav-sidebar.html.twig' %}
+
+<div class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                    <div>
+                            <h4 class="mb-3">Añadir/Eliminar Stock de producto </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form) }}
+
+        <div class="{{(errors is not empty and errors.stock is defined) or
+        (errors is not empty and errors.no_stock is defined) ? 'form-group has-error has-danger' : 'form-group'  }}">
+            <label>Stock *</label>
+            {{ form_widget(form.stock, { 'required':'','name':'product[stock]','id':'product_stock','attr': {'class': 'form-control'} }) }}
+
+            {% if(errors is not empty and errors.stock is defined) %}
+                <div class="help-block with-errors">
+                    <ul class="list-unstyled">
+                        <li>Rellene este campo.</li>
+                    </ul>
+                </div>
+            {% endif %}
+
+            {% if(errors is not empty and errors.no_stock is defined) %}
+                <div class="help-block with-errors">
+                    <ul class="list-unstyled">
+                        <li> {{ errors.no_stock }}</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+
+
+
+
+        <div class="col-md-12 mt-5 text-center">
+            <button type="submit" class="btn btn-primary mr-2">Modificar Stock de producto</button>
+        </div>
+        {{ form_end(form) }}
+
+
+
+
+        </form>
+
+
+
+
+    </div>
+</div>
+{% include 'layout/footer.html.twig' %}

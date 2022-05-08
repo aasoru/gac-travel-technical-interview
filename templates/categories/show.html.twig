@@ -1,0 +1,38 @@
+
+{% include 'layout/header.html.twig' %}
+{% include 'layout/nav-sidebar.html.twig' %}
+
+<div class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                    <div>
+                        <h4 class="mb-3">Detalle de la categoria </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(form) }}
+
+        <div class="{{errors is not empty and errors.name is defined ? 'form-group has-error has-danger' : 'form-group'  }}">
+            <label>{{  form_label(form.name)}} *</label>
+            {{ form_widget(form.name, { 'required':'','disabled':'disabled','name':'category[name]','id':'category_name','attr': {'class': 'form-control'} }) }}
+
+            {% if(errors is not empty and errors.name is defined) %}
+                <div class="help-block with-errors">
+                    <ul class="list-unstyled">
+                        <li>Rellene este campo.</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+
+        {{ form_end(form) }}
+
+        </form>
+
+    </div>
+</div>
+{% include 'layout/footer.html.twig' %}

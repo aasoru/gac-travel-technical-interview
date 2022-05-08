@@ -1,0 +1,52 @@
+
+{% include 'layout/header.html.twig' %}
+{% include 'layout/nav-sidebar.html.twig' %}
+
+<div class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                    <div>
+                        <h4 class="mb-3">Categorias</h4>
+                    </div>
+                    <a href="new" class="btn btn-primary add-list">
+                        <i class="las la-plus mr-3"></i>Nueva Categoria
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="table-responsive mb-3">
+                    <table class="table mb-0 tbl-server-info no-footer" role="grid">
+                        <thead class="bg-white text-uppercase">
+                        <tr class="ligth ligth-data" role="row">
+                            <th class="text-left">Id</th>
+                            <th class="text-left">Nombre</th>
+                            <th class="text-left">Fecha de Creación</th>
+                            <th class="text-left">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
+                                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <a style="padding: 5px" href="{{ path('categories_show', {'id': category.id}) }}">Ver</a>
+                                    <a style="padding: 5px" href="{{ path('categories_edit', {'id': category.id}) }}">Editar</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">No hay categorias que mostrar</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'layout/footer.html.twig' %}
